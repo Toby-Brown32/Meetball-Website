@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="91" assertions="191" errors="15" failures="2" skipped="0" time="53.465757">
+    <testsuite name="Tests\Feature\Admin\StatsInputterTest" file="tests\Feature\Admin\StatsInputterTest.php" tests="8" assertions="37" errors="0" failures="0" skipped="0" time="1.415764">
+      <testcase name="it submits valid played/goals" class="Tests\Feature\Admin\StatsInputterTest" classname="Tests.Feature.Admin.StatsInputterTest" file="tests\Feature\Admin\StatsInputterTest.php::it submits valid played/goals" line="0" assertions="2" time="1.181522"/>
+      <testcase name="it submits reserve and increments missed_games" class="Tests\Feature\Admin\StatsInputterTest" classname="Tests.Feature.Admin.StatsInputterTest" file="tests\Feature\Admin\StatsInputterTest.php::it submits reserve and increments missed_games" line="0" assertions="3" time="0.028398"/>
+      <testcase name="it requires team" class="Tests\Feature\Admin\StatsInputterTest" classname="Tests.Feature.Admin.StatsInputterTest" file="tests\Feature\Admin\StatsInputterTest.php::it requires team" line="0" assertions="3" time="0.036442"/>
+      <testcase name="it requires played or reserve" class="Tests\Feature\Admin\StatsInputterTest" classname="Tests.Feature.Admin.StatsInputterTest" file="tests\Feature\Admin\StatsInputterTest.php::it requires played or reserve" line="0" assertions="3" time="0.033895"/>
+      <testcase name="it rejects both played and reserve" class="Tests\Feature\Admin\StatsInputterTest" classname="Tests.Feature.Admin.StatsInputterTest" file="tests\Feature\Admin\StatsInputterTest.php::it rejects both played and reserve" line="0" assertions="3" time="0.028061"/>
+      <testcase name="it does nothing on empty submission" class="Tests\Feature\Admin\StatsInputterTest" classname="Tests.Feature.Admin.StatsInputterTest" file="tests\Feature\Admin\StatsInputterTest.php::it does nothing on empty submission" line="0" assertions="3" time="0.029076"/>
+      <testcase name="it submits multiple players" class="Tests\Feature\Admin\StatsInputterTest" classname="Tests.Feature.Admin.StatsInputterTest" file="tests\Feature\Admin\StatsInputterTest.php::it submits multiple players" line="0" assertions="3" time="0.036974"/>
+      <testcase name="it submits 16 players with mixed data" class="Tests\Feature\Admin\StatsInputterTest" classname="Tests.Feature.Admin.StatsInputterTest" file="tests\Feature\Admin\StatsInputterTest.php::it submits 16 players with mixed data" line="0" assertions="17" time="0.041396"/>
+    </testsuite>
+    <testsuite name="Tests\Unit\Actions\Draw\DrawTeamsTest" file="tests\Unit\Actions\Draw\DrawTeamsTest.php" tests="5" assertions="10" errors="1" failures="0" skipped="0" time="5.647988">
+      <testcase name="`DrawTeams` → it splits players into two balanced teams (even)" class="Tests\Unit\Actions\Draw\DrawTeamsTest" classname="Tests.Unit.Actions.Draw.DrawTeamsTest" file="tests\Unit\Actions\Draw\DrawTeamsTest.php::`DrawTeams` → it splits players into two balanced teams (even)" line="0" assertions="4" time="0.948147"/>
+      <testcase name="`DrawTeams` → it splits players into two balanced teams (odd)" class="Tests\Unit\Actions\Draw\DrawTeamsTest" classname="Tests.Unit.Actions.Draw.DrawTeamsTest" file="tests\Unit\Actions\Draw\DrawTeamsTest.php::`DrawTeams` → it splits players into two balanced teams (odd)" line="0" assertions="4" time="3.963915"/>
+      <testcase name="`DrawTeams` → it returns all players, none lost or duplicated" class="Tests\Unit\Actions\Draw\DrawTeamsTest" classname="Tests.Unit.Actions.Draw.DrawTeamsTest" file="tests\Unit\Actions\Draw\DrawTeamsTest.php::`DrawTeams` → it returns all players, none lost or duplicated" line="0" assertions="1" time="0.572605"/>
+      <testcase name="`DrawTeams` → it returns fallback if no balance possible" class="Tests\Unit\Actions\Draw\DrawTeamsTest" classname="Tests.Unit.Actions.Draw.DrawTeamsTest" file="tests\Unit\Actions\Draw\DrawTeamsTest.php::`DrawTeams` → it returns fallback if no balance possible" line="0" assertions="0" time="0.000000">
+        <error type="Illuminate\Database\QueryException">`DrawTeams` → it returns fallback if no balance possibleIlluminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed (Connection: sqlite, Database: database/testing.sqlite, SQL: delete from "players")&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:4170
+at vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php:23
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2238
+at vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php:23
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:2540
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:2556
+at tests\Unit\Actions\Draw\DrawTeamsTest.php:11
+Caused by
+PDOException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:4170
+at vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php:23
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2238
+at vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php:23
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:2540
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:2556
+at tests\Unit\Actions\Draw\DrawTeamsTest.php:11</error>
+      </testcase>
+      <testcase name="`DrawTeams` → it works with a single player" class="Tests\Unit\Actions\Draw\DrawTeamsTest" classname="Tests.Unit.Actions.Draw.DrawTeamsTest" file="tests\Unit\Actions\Draw\DrawTeamsTest.php::`DrawTeams` → it works with a single player" line="0" assertions="1" time="0.163322"/>
+    </testsuite>
+    <testsuite name="Tests\Unit\Actions\Draw\GetGuaranteedPlayersTest" file="tests\Unit\Actions\Draw\GetGuaranteedPlayersTest.php" tests="7" assertions="6" errors="2" failures="0" skipped="0" time="6.78597">
+      <testcase name="`GetGuaranteedPlayers` → it guarantees Andy Brown if present" class="Tests\Unit\Actions\Draw\GetGuaranteedPlayersTest" classname="Tests.Unit.Actions.Draw.GetGuaranteedPlayersTest" file="tests\Unit\Actions\Draw\GetGuaranteedPlayersTest.php::`GetGuaranteedPlayers` → it guarantees Andy Brown if present" line="0" assertions="1" time="0.761596"/>
+      <testcase name="`GetGuaranteedPlayers` → it guarantees last week's player of the match" class="Tests\Unit\Actions\Draw\GetGuaranteedPlayersTest" classname="Tests.Unit.Actions.Draw.GetGuaranteedPlayersTest" file="tests\Unit\Actions\Draw\GetGuaranteedPlayersTest.php::`GetGuaranteedPlayers` → it guarantees last week's player of the match" line="0" assertions="1" time="1.908376"/>
+      <testcase name="`GetGuaranteedPlayers` → it guarantees players with missed_games &gt; 0" class="Tests\Unit\Actions\Draw\GetGuaranteedPlayersTest" classname="Tests.Unit.Actions.Draw.GetGuaranteedPlayersTest" file="tests\Unit\Actions\Draw\GetGuaranteedPlayersTest.php::`GetGuaranteedPlayers` → it guarantees players with missed_games &gt; 0" line="0" assertions="1" time="0.376895"/>
+      <testcase name="`GetGuaranteedPlayers` → it guarantees first-time players (no match_player record)" class="Tests\Unit\Actions\Draw\GetGuaranteedPlayersTest" classname="Tests.Unit.Actions.Draw.GetGuaranteedPlayersTest" file="tests\Unit\Actions\Draw\GetGuaranteedPlayersTest.php::`GetGuaranteedPlayers` → it guarantees first-time players (no match_player record)" line="0" assertions="0" time="0.373464">
+        <error type="Illuminate\Database\QueryException">`GetGuaranteedPlayers` → it guarantees first-time players (no match_player record)Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed (Connection: sqlite, Database: database/testing.sqlite, SQL: insert into "match_player" ("match_id", "player_id", "team", "played", "reserve", "goals", "assists", "season_id", "created_at", "updated_at") values (1, 2, Les Bleus, 1, 0, 0, 0, 1, 2026-01-24 18:46:16, 2026-01-24 18:46:16))&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:530
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3848
+at tests\Unit\Actions\Draw\GetGuaranteedPlayersTest.php:55
+Caused by
+PDOException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:530
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3848
+at tests\Unit\Actions\Draw\GetGuaranteedPlayersTest.php:55</error>
+      </testcase>
+      <testcase name="`GetGuaranteedPlayers` → it fills up to 16 drawn, rest are reserves" class="Tests\Unit\Actions\Draw\GetGuaranteedPlayersTest" classname="Tests.Unit.Actions.Draw.GetGuaranteedPlayersTest" file="tests\Unit\Actions\Draw\GetGuaranteedPlayersTest.php::`GetGuaranteedPlayers` → it fills up to 16 drawn, rest are reserves" line="0" assertions="0" time="0.444060">
+        <error type="Illuminate\Database\QueryException">`GetGuaranteedPlayers` → it fills up to 16 drawn, rest are reservesIlluminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed (Connection: sqlite, Database: database/testing.sqlite, SQL: insert into "match_player" ("match_id", "player_id", "team", "played", "reserve", "goals", "assists", "season_id", "created_at", "updated_at") values (3, 6, Les Bleus, 1, 0, 0, 0, 2, 2026-01-24 18:46:16, 2026-01-24 18:46:16))&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:530
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3848
+at tests\Unit\Actions\Draw\GetGuaranteedPlayersTest.php:81
+Caused by
+PDOException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:530
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3848
+at tests\Unit\Actions\Draw\GetGuaranteedPlayersTest.php:81</error>
+      </testcase>
+      <testcase name="`GetGuaranteedPlayers` → it no duplicates in guaranteed/drawn" class="Tests\Unit\Actions\Draw\GetGuaranteedPlayersTest" classname="Tests.Unit.Actions.Draw.GetGuaranteedPlayersTest" file="tests\Unit\Actions\Draw\GetGuaranteedPlayersTest.php::`GetGuaranteedPlayers` → it no duplicates in guaranteed/drawn" line="0" assertions="1" time="0.671411"/>
+      <testcase name="`GetGuaranteedPlayers` → it if no special cases, fills drawn with randoms" class="Tests\Unit\Actions\Draw\GetGuaranteedPlayersTest" classname="Tests.Unit.Actions.Draw.GetGuaranteedPlayersTest" file="tests\Unit\Actions\Draw\GetGuaranteedPlayersTest.php::`GetGuaranteedPlayers` → it if no special cases, fills drawn with randoms" line="0" assertions="2" time="2.250166"/>
+    </testsuite>
+    <testsuite name="Tests\Unit\Actions\Leaderboard\GetAssistsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetAssistsLeaderboardTest.php" tests="5" assertions="14" errors="0" failures="0" skipped="0" time="1.463995">
+      <testcase name="`GetAssistsLeaderboard` → it returns players ordered by assists" class="Tests\Unit\Actions\Leaderboard\GetAssistsLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetAssistsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetAssistsLeaderboardTest.php::`GetAssistsLeaderboard` → it returns players ordered by assists" line="0" assertions="4" time="1.327836"/>
+      <testcase name="`GetAssistsLeaderboard` → it returns only the top N players if limit is set" class="Tests\Unit\Actions\Leaderboard\GetAssistsLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetAssistsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetAssistsLeaderboardTest.php::`GetAssistsLeaderboard` → it returns only the top N players if limit is set" line="0" assertions="5" time="0.052294"/>
+      <testcase name="`GetAssistsLeaderboard` → it returns assists for all seasons if seasonId is all" class="Tests\Unit\Actions\Leaderboard\GetAssistsLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetAssistsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetAssistsLeaderboardTest.php::`GetAssistsLeaderboard` → it returns assists for all seasons if seasonId is all" line="0" assertions="2" time="0.025698"/>
+      <testcase name="`GetAssistsLeaderboard` → it does not affect player assists when editing another player" class="Tests\Unit\Actions\Leaderboard\GetAssistsLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetAssistsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetAssistsLeaderboardTest.php::`GetAssistsLeaderboard` → it does not affect player assists when editing another player" line="0" assertions="1" time="0.022829"/>
+      <testcase name="`GetAssistsLeaderboard` → it ignores players with no matches played" class="Tests\Unit\Actions\Leaderboard\GetAssistsLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetAssistsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetAssistsLeaderboardTest.php::`GetAssistsLeaderboard` → it ignores players with no matches played" line="0" assertions="2" time="0.035338"/>
+    </testsuite>
+    <testsuite name="Tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest.php" tests="6" assertions="3" errors="4" failures="0" skipped="0" time="3.383884">
+      <testcase name="`GetGoalDifferenceLeaderboard` → it can be instantiated" class="Tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetGoalDifferenceLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest.php::`GetGoalDifferenceLeaderboard` → it can be instantiated" line="0" assertions="1" time="0.446988"/>
+      <testcase name="`GetGoalDifferenceLeaderboard` → it returns players ordered by goal difference" class="Tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetGoalDifferenceLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest.php::`GetGoalDifferenceLeaderboard` → it returns players ordered by goal difference" line="0" assertions="0" time="0.000000">
+        <error type="Illuminate\Database\QueryException">`GetGoalDifferenceLeaderboard` → it returns players ordered by goal differenceIlluminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed (Connection: sqlite, Database: database/testing.sqlite, SQL: delete from "matches")&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:4170
+at tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest.php:14
+Caused by
+PDOException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:4170
+at tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest.php:14</error>
+      </testcase>
+      <testcase name="`GetGoalDifferenceLeaderboard` → it returns only the top N players if limit is set" class="Tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetGoalDifferenceLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest.php::`GetGoalDifferenceLeaderboard` → it returns only the top N players if limit is set" line="0" assertions="0" time="0.000000">
+        <error type="Illuminate\Database\QueryException">`GetGoalDifferenceLeaderboard` → it returns only the top N players if limit is setIlluminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed (Connection: sqlite, Database: database/testing.sqlite, SQL: delete from "matches")&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:4170
+at tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest.php:14
+Caused by
+PDOException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:4170
+at tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest.php:14</error>
+      </testcase>
+      <testcase name="`GetGoalDifferenceLeaderboard` → it returns goal difference for all seasons if seasonId is all" class="Tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetGoalDifferenceLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest.php::`GetGoalDifferenceLeaderboard` → it returns goal difference for all seasons if seasonId is all" line="0" assertions="0" time="1.913449">
+        <error type="Illuminate\Database\QueryException">`GetGoalDifferenceLeaderboard` → it returns goal difference for all seasons if seasonId is allIlluminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed (Connection: sqlite, Database: database/testing.sqlite, SQL: insert into "matches" ("season_id", "match_date", "bleu_goals", "salmon_goals", "lemon_goals", "green_goals", "player_of_match_id", "updated_at", "created_at") values (4, 2014-06-10, 2, 1, 0, 0, ?, 2026-01-24 18:46:18, 2026-01-24 18:46:18))&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:530
+at vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3897
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2235
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:370
+at vendor\laravel\framework\src\Illuminate\Collections\Traits\EnumeratesValues.php:271
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:365
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:321
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:315
+at tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest.php:106
+Caused by
+PDOException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:530
+at vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3897
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2235
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:370
+at vendor\laravel\framework\src\Illuminate\Collections\Traits\EnumeratesValues.php:271
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:365
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:321
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:315
+at tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest.php:106</error>
+      </testcase>
+      <testcase name="`GetGoalDifferenceLeaderboard` → it does not affect player goal difference when editing another player" class="Tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetGoalDifferenceLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest.php::`GetGoalDifferenceLeaderboard` → it does not affect player goal difference when editing another player" line="0" assertions="0" time="0.580153">
+        <error type="ErrorException">`GetGoalDifferenceLeaderboard` → it does not affect player goal difference when editing another playerErrorException: Attempt to read property "goal_difference" on null&#13;
+at vendor\laravel\framework\src\Illuminate\Foundation\Bootstrap\HandleExceptions.php:258
+at tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest.php:177</error>
+      </testcase>
+      <testcase name="`GetGoalDifferenceLeaderboard` → it ignores players with no matches played" class="Tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetGoalDifferenceLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalDifferenceLeaderboardTest.php::`GetGoalDifferenceLeaderboard` → it ignores players with no matches played" line="0" assertions="2" time="0.443295"/>
+    </testsuite>
+    <testsuite name="Tests\Unit\Actions\Leaderboard\GetGoalInvolvementsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalInvolvementsLeaderboardTest.php" tests="6" assertions="11" errors="1" failures="0" skipped="0" time="2.069111">
+      <testcase name="`GetGoalInvolvementsLeaderboard` → it can be instantiated" class="Tests\Unit\Actions\Leaderboard\GetGoalInvolvementsLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetGoalInvolvementsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalInvolvementsLeaderboardTest.php::`GetGoalInvolvementsLeaderboard` → it can be instantiated" line="0" assertions="1" time="0.626074"/>
+      <testcase name="`GetGoalInvolvementsLeaderboard` → it returns players ordered by goal involvements" class="Tests\Unit\Actions\Leaderboard\GetGoalInvolvementsLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetGoalInvolvementsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalInvolvementsLeaderboardTest.php::`GetGoalInvolvementsLeaderboard` → it returns players ordered by goal involvements" line="0" assertions="5" time="0.554914"/>
+      <testcase name="`GetGoalInvolvementsLeaderboard` → it returns only the top N players if limit is set" class="Tests\Unit\Actions\Leaderboard\GetGoalInvolvementsLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetGoalInvolvementsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalInvolvementsLeaderboardTest.php::`GetGoalInvolvementsLeaderboard` → it returns only the top N players if limit is set" line="0" assertions="1" time="0.269462"/>
+      <testcase name="`GetGoalInvolvementsLeaderboard` → it returns goal involvements for all seasons if seasonId is all" class="Tests\Unit\Actions\Leaderboard\GetGoalInvolvementsLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetGoalInvolvementsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalInvolvementsLeaderboardTest.php::`GetGoalInvolvementsLeaderboard` → it returns goal involvements for all seasons if seasonId is all" line="0" assertions="2" time="0.241725"/>
+      <testcase name="`GetGoalInvolvementsLeaderboard` → it does not affect player goal involvements when editing another player" class="Tests\Unit\Actions\Leaderboard\GetGoalInvolvementsLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetGoalInvolvementsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalInvolvementsLeaderboardTest.php::`GetGoalInvolvementsLeaderboard` → it does not affect player goal involvements when editing another player" line="0" assertions="0" time="0.000000">
+        <error type="Illuminate\Database\QueryException">`GetGoalInvolvementsLeaderboard` → it does not affect player goal involvements when editing another playerIlluminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed (Connection: sqlite, Database: database/testing.sqlite, SQL: delete from "matches")&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:4170
+at tests\Unit\Actions\Leaderboard\GetGoalInvolvementsLeaderboardTest.php:15
+Caused by
+PDOException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:4170
+at tests\Unit\Actions\Leaderboard\GetGoalInvolvementsLeaderboardTest.php:15</error>
+      </testcase>
+      <testcase name="`GetGoalInvolvementsLeaderboard` → it ignores players with no matches played" class="Tests\Unit\Actions\Leaderboard\GetGoalInvolvementsLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetGoalInvolvementsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalInvolvementsLeaderboardTest.php::`GetGoalInvolvementsLeaderboard` → it ignores players with no matches played" line="0" assertions="2" time="0.376936"/>
+    </testsuite>
+    <testsuite name="Tests\Unit\Actions\Leaderboard\GetGoalsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalsLeaderboardTest.php" tests="6" assertions="7" errors="1" failures="0" skipped="0" time="7.973346">
+      <testcase name="`GetGoalsLeaderboard` → it can be instantiated" class="Tests\Unit\Actions\Leaderboard\GetGoalsLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetGoalsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalsLeaderboardTest.php::`GetGoalsLeaderboard` → it can be instantiated" line="0" assertions="1" time="3.421111"/>
+      <testcase name="`GetGoalsLeaderboard` → it returns players ordered by goals" class="Tests\Unit\Actions\Leaderboard\GetGoalsLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetGoalsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalsLeaderboardTest.php::`GetGoalsLeaderboard` → it returns players ordered by goals" line="0" assertions="0" time="1.296972">
+        <error type="Illuminate\Database\QueryException">`GetGoalsLeaderboard` → it returns players ordered by goalsIlluminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed (Connection: sqlite, Database: database/testing.sqlite, SQL: insert into "match_player" ("assists", "created_at", "goals", "match_id", "played", "player_id", "reserve", "season_id", "team", "updated_at") values (1, 2026-01-24 18:46:16, 2, 1, 1, 3, 0, 1, Les Bleus, 2026-01-24 18:46:16), (0, 2026-01-24 18:46:16, 3, 2, 1, 4, 0, 1, Salmons, 2026-01-24 18:46:16), (0, 2026-01-24 18:46:16, 1, 1, 1, 5, 0, 1, Les Bleus, 2026-01-24 18:46:16))&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:530
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3848
+at tests\Unit\Actions\Leaderboard\GetGoalsLeaderboardTest.php:32
+Caused by
+PDOException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:530
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3848
+at tests\Unit\Actions\Leaderboard\GetGoalsLeaderboardTest.php:32</error>
+      </testcase>
+      <testcase name="`GetGoalsLeaderboard` → it returns only the top N players if limit is set" class="Tests\Unit\Actions\Leaderboard\GetGoalsLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetGoalsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalsLeaderboardTest.php::`GetGoalsLeaderboard` → it returns only the top N players if limit is set" line="0" assertions="1" time="1.160967"/>
+      <testcase name="`GetGoalsLeaderboard` → it returns goals for all seasons if seasonId is all" class="Tests\Unit\Actions\Leaderboard\GetGoalsLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetGoalsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalsLeaderboardTest.php::`GetGoalsLeaderboard` → it returns goals for all seasons if seasonId is all" line="0" assertions="2" time="0.160244"/>
+      <testcase name="`GetGoalsLeaderboard` → it does not affect player goals when editing another player" class="Tests\Unit\Actions\Leaderboard\GetGoalsLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetGoalsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalsLeaderboardTest.php::`GetGoalsLeaderboard` → it does not affect player goals when editing another player" line="0" assertions="1" time="1.774106"/>
+      <testcase name="`GetGoalsLeaderboard` → it ignores players with no matches played" class="Tests\Unit\Actions\Leaderboard\GetGoalsLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetGoalsLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetGoalsLeaderboardTest.php::`GetGoalsLeaderboard` → it ignores players with no matches played" line="0" assertions="2" time="0.159945"/>
+    </testsuite>
+    <testsuite name="Tests\Unit\Actions\Leaderboard\GetLeaderboardColumnsTest" file="tests\Unit\Actions\Leaderboard\GetLeaderboardColumnsTest.php" tests="3" assertions="11" errors="0" failures="0" skipped="0" time="0.044746">
+      <testcase name="`GetLeaderboardColumns` → it returns correct columns for matches_played" class="Tests\Unit\Actions\Leaderboard\GetLeaderboardColumnsTest" classname="Tests.Unit.Actions.Leaderboard.GetLeaderboardColumnsTest" file="tests\Unit\Actions\Leaderboard\GetLeaderboardColumnsTest.php::`GetLeaderboardColumns` → it returns correct columns for matches_played" line="0" assertions="4" time="0.033971"/>
+      <testcase name="`GetLeaderboardColumns` → it returns correct columns for assists" class="Tests\Unit\Actions\Leaderboard\GetLeaderboardColumnsTest" classname="Tests.Unit.Actions.Leaderboard.GetLeaderboardColumnsTest" file="tests\Unit\Actions\Leaderboard\GetLeaderboardColumnsTest.php::`GetLeaderboardColumns` → it returns correct columns for assists" line="0" assertions="5" time="0.008672"/>
+      <testcase name="`GetLeaderboardColumns` → it does not leak columns between stats" class="Tests\Unit\Actions\Leaderboard\GetLeaderboardColumnsTest" classname="Tests.Unit.Actions.Leaderboard.GetLeaderboardColumnsTest" file="tests\Unit\Actions\Leaderboard\GetLeaderboardColumnsTest.php::`GetLeaderboardColumns` → it does not leak columns between stats" line="0" assertions="2" time="0.002103"/>
+    </testsuite>
+    <testsuite name="Tests\Unit\Actions\Leaderboard\GetLeaderboardStatTest" file="tests\Unit\Actions\Leaderboard\GetLeaderboardStatTest.php" tests="4" assertions="4" errors="0" failures="0" skipped="0" time="0.429712">
+      <testcase name="`GetLeaderboardStat` → it can be instantiated" class="Tests\Unit\Actions\Leaderboard\GetLeaderboardStatTest" classname="Tests.Unit.Actions.Leaderboard.GetLeaderboardStatTest" file="tests\Unit\Actions\Leaderboard\GetLeaderboardStatTest.php::`GetLeaderboardStat` → it can be instantiated" line="0" assertions="1" time="0.268852"/>
+      <testcase name="`GetLeaderboardStat` → it delegates to GetGoalsLeaderboard for goals" class="Tests\Unit\Actions\Leaderboard\GetLeaderboardStatTest" classname="Tests.Unit.Actions.Leaderboard.GetLeaderboardStatTest" file="tests\Unit\Actions\Leaderboard\GetLeaderboardStatTest.php::`GetLeaderboardStat` → it delegates to GetGoalsLeaderboard for goals" line="0" assertions="1" time="0.071009"/>
+      <testcase name="`GetLeaderboardStat` → it delegates to GetAssistsLeaderboard for assists" class="Tests\Unit\Actions\Leaderboard\GetLeaderboardStatTest" classname="Tests.Unit.Actions.Leaderboard.GetLeaderboardStatTest" file="tests\Unit\Actions\Leaderboard\GetLeaderboardStatTest.php::`GetLeaderboardStat` → it delegates to GetAssistsLeaderboard for assists" line="0" assertions="1" time="0.075764"/>
+      <testcase name="`GetLeaderboardStat` → it throws for unknown stat" class="Tests\Unit\Actions\Leaderboard\GetLeaderboardStatTest" classname="Tests.Unit.Actions.Leaderboard.GetLeaderboardStatTest" file="tests\Unit\Actions\Leaderboard\GetLeaderboardStatTest.php::`GetLeaderboardStat` → it throws for unknown stat" line="0" assertions="1" time="0.014087"/>
+    </testsuite>
+    <testsuite name="Tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest.php" tests="6" assertions="7" errors="3" failures="0" skipped="0" time="7.533933">
+      <testcase name="`GetMatchesPlayedLeaderboard` → it can be instantiated" class="Tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetMatchesPlayedLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest.php::`GetMatchesPlayedLeaderboard` → it can be instantiated" line="0" assertions="1" time="0.344482"/>
+      <testcase name="`GetMatchesPlayedLeaderboard` → it returns players ordered by matches played" class="Tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetMatchesPlayedLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest.php::`GetMatchesPlayedLeaderboard` → it returns players ordered by matches played" line="0" assertions="5" time="0.813605"/>
+      <testcase name="`GetMatchesPlayedLeaderboard` → it returns only the top N players if limit is set" class="Tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetMatchesPlayedLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest.php::`GetMatchesPlayedLeaderboard` → it returns only the top N players if limit is set" line="0" assertions="0" time="1.663241">
+        <error type="Illuminate\Database\QueryException">`GetMatchesPlayedLeaderboard` → it returns only the top N players if limit is setIlluminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed (Connection: sqlite, Database: database/testing.sqlite, SQL: insert into "match_player" ("match_id", "player_id", "team", "played", "reserve", "goals", "assists", "season_id", "created_at", "updated_at") values (2, 6, Les Bleus, 1, 0, 0, 0, 1, 2026-01-24 18:46:15, 2026-01-24 18:46:15))&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:530
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3848
+at tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest.php:83
+Caused by
+PDOException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:530
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3848
+at tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest.php:83</error>
+      </testcase>
+      <testcase name="`GetMatchesPlayedLeaderboard` → it returns matches played for all seasons if seasonId is all" class="Tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetMatchesPlayedLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest.php::`GetMatchesPlayedLeaderboard` → it returns matches played for all seasons if seasonId is all" line="0" assertions="0" time="4.113878">
+        <error type="Illuminate\Database\QueryException">`GetMatchesPlayedLeaderboard` → it returns matches played for all seasons if seasonId is allIlluminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed (Connection: sqlite, Database: database/testing.sqlite, SQL: insert into "match_player" ("assists", "created_at", "goals", "match_id", "played", "player_id", "reserve", "season_id", "team", "updated_at") values (0, 2026-01-24 18:46:17, 0, 1, 1, 1, 0, 1, Les Bleus, 2026-01-24 18:46:17), (0, 2026-01-24 18:46:17, 0, 2, 1, 1, 0, 2, Les Bleus, 2026-01-24 18:46:17))&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:530
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3848
+at tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest.php:107
+Caused by
+PDOException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:530
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3848
+at tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest.php:107</error>
+      </testcase>
+      <testcase name="`GetMatchesPlayedLeaderboard` → it does not affect player matches played when editing another player" class="Tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetMatchesPlayedLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest.php::`GetMatchesPlayedLeaderboard` → it does not affect player matches played when editing another player" line="0" assertions="1" time="0.159933"/>
+      <testcase name="`GetMatchesPlayedLeaderboard` → it ignores players with no matches played" class="Tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetMatchesPlayedLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest.php::`GetMatchesPlayedLeaderboard` → it ignores players with no matches played" line="0" assertions="0" time="0.438794">
+        <error type="Illuminate\Database\QueryException">`GetMatchesPlayedLeaderboard` → it ignores players with no matches playedIlluminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed (Connection: sqlite, Database: database/testing.sqlite, SQL: insert into "match_player" ("assists", "created_at", "goals", "match_id", "played", "player_id", "reserve", "season_id", "team", "updated_at") values (0, 2026-01-24 18:46:20, 0, 1, 1, 1, 0, 1, Les Bleus, 2026-01-24 18:46:20))&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:530
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3848
+at tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest.php:185
+Caused by
+PDOException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:530
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3848
+at tests\Unit\Actions\Leaderboard\GetMatchesPlayedLeaderboardTest.php:185</error>
+      </testcase>
+    </testsuite>
+    <testsuite name="Tests\Unit\Actions\Leaderboard\GetPlayerOfMatchLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetPlayerOfMatchLeaderboardTest.php" tests="6" assertions="9" errors="2" failures="0" skipped="0" time="5.141831">
+      <testcase name="`GetPlayerOfMatchLeaderboard` → it can be instantiated" class="Tests\Unit\Actions\Leaderboard\GetPlayerOfMatchLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetPlayerOfMatchLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetPlayerOfMatchLeaderboardTest.php::`GetPlayerOfMatchLeaderboard` → it can be instantiated" line="0" assertions="0" time="0.000000">
+        <error type="Illuminate\Database\QueryException">`GetPlayerOfMatchLeaderboard` → it can be instantiatedIlluminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed (Connection: sqlite, Database: database/testing.sqlite, SQL: delete from "matches")&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:4170
+at tests\Unit\Actions\Leaderboard\GetPlayerOfMatchLeaderboardTest.php:13
+Caused by
+PDOException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:4170
+at tests\Unit\Actions\Leaderboard\GetPlayerOfMatchLeaderboardTest.php:13</error>
+      </testcase>
+      <testcase name="`GetPlayerOfMatchLeaderboard` → it returns players ordered by player_of_match" class="Tests\Unit\Actions\Leaderboard\GetPlayerOfMatchLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetPlayerOfMatchLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetPlayerOfMatchLeaderboardTest.php::`GetPlayerOfMatchLeaderboard` → it returns players ordered by player_of_match" line="0" assertions="5" time="3.657317"/>
+      <testcase name="`GetPlayerOfMatchLeaderboard` → it returns only the top N players if limit is set" class="Tests\Unit\Actions\Leaderboard\GetPlayerOfMatchLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetPlayerOfMatchLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetPlayerOfMatchLeaderboardTest.php::`GetPlayerOfMatchLeaderboard` → it returns only the top N players if limit is set" line="0" assertions="1" time="0.179684"/>
+      <testcase name="`GetPlayerOfMatchLeaderboard` → it returns player_of_match for all seasons if seasonId is all" class="Tests\Unit\Actions\Leaderboard\GetPlayerOfMatchLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetPlayerOfMatchLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetPlayerOfMatchLeaderboardTest.php::`GetPlayerOfMatchLeaderboard` → it returns player_of_match for all seasons if seasonId is all" line="0" assertions="0" time="0.000000">
+        <error type="Illuminate\Database\QueryException">`GetPlayerOfMatchLeaderboard` → it returns player_of_match for all seasons if seasonId is allIlluminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed (Connection: sqlite, Database: database/testing.sqlite, SQL: delete from "matches")&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:4170
+at tests\Unit\Actions\Leaderboard\GetPlayerOfMatchLeaderboardTest.php:13
+Caused by
+PDOException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:4170
+at tests\Unit\Actions\Leaderboard\GetPlayerOfMatchLeaderboardTest.php:13</error>
+      </testcase>
+      <testcase name="`GetPlayerOfMatchLeaderboard` → it does not affect player_of_match when editing another player" class="Tests\Unit\Actions\Leaderboard\GetPlayerOfMatchLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetPlayerOfMatchLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetPlayerOfMatchLeaderboardTest.php::`GetPlayerOfMatchLeaderboard` → it does not affect player_of_match when editing another player" line="0" assertions="1" time="0.933460"/>
+      <testcase name="`GetPlayerOfMatchLeaderboard` → it ignores players with no matches played" class="Tests\Unit\Actions\Leaderboard\GetPlayerOfMatchLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetPlayerOfMatchLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetPlayerOfMatchLeaderboardTest.php::`GetPlayerOfMatchLeaderboard` → it ignores players with no matches played" line="0" assertions="2" time="0.371370"/>
+    </testsuite>
+    <testsuite name="Tests\Unit\Actions\Leaderboard\GetTeamGoalsForLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetTeamGoalsForLeaderboardTest.php" tests="6" assertions="11" errors="0" failures="1" skipped="0" time="5.564445">
+      <testcase name="`GetTeamGoalsForLeaderboard` → it can be instantiated" class="Tests\Unit\Actions\Leaderboard\GetTeamGoalsForLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetTeamGoalsForLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetTeamGoalsForLeaderboardTest.php::`GetTeamGoalsForLeaderboard` → it can be instantiated" line="0" assertions="1" time="0.270309"/>
+      <testcase name="`GetTeamGoalsForLeaderboard` → it returns players ordered by team_goals_for" class="Tests\Unit\Actions\Leaderboard\GetTeamGoalsForLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetTeamGoalsForLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetTeamGoalsForLeaderboardTest.php::`GetTeamGoalsForLeaderboard` → it returns players ordered by team_goals_for" line="0" assertions="5" time="0.205098"/>
+      <testcase name="`GetTeamGoalsForLeaderboard` → it returns only the top N players if limit is set" class="Tests\Unit\Actions\Leaderboard\GetTeamGoalsForLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetTeamGoalsForLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetTeamGoalsForLeaderboardTest.php::`GetTeamGoalsForLeaderboard` → it returns only the top N players if limit is set" line="0" assertions="1" time="0.197845"/>
+      <testcase name="`GetTeamGoalsForLeaderboard` → it returns team_goals_for for all seasons if seasonId is all" class="Tests\Unit\Actions\Leaderboard\GetTeamGoalsForLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetTeamGoalsForLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetTeamGoalsForLeaderboardTest.php::`GetTeamGoalsForLeaderboard` → it returns team_goals_for for all seasons if seasonId is all" line="0" assertions="1" time="4.057879">
+        <failure type="PHPUnit\Framework\ExpectationFailedException">`GetTeamGoalsForLeaderboard` → it returns team_goals_for for all seasons if seasonId is allFailed asserting that actual size 3 matches expected size 1.&#13;
+at tests\Unit\Actions\Leaderboard\GetTeamGoalsForLeaderboardTest.php:165</failure>
+      </testcase>
+      <testcase name="`GetTeamGoalsForLeaderboard` → it does not affect team_goals_for when editing another player" class="Tests\Unit\Actions\Leaderboard\GetTeamGoalsForLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetTeamGoalsForLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetTeamGoalsForLeaderboardTest.php::`GetTeamGoalsForLeaderboard` → it does not affect team_goals_for when editing another player" line="0" assertions="1" time="0.699799"/>
+      <testcase name="`GetTeamGoalsForLeaderboard` → it ignores players with no matches played" class="Tests\Unit\Actions\Leaderboard\GetTeamGoalsForLeaderboardTest" classname="Tests.Unit.Actions.Leaderboard.GetTeamGoalsForLeaderboardTest" file="tests\Unit\Actions\Leaderboard\GetTeamGoalsForLeaderboardTest.php::`GetTeamGoalsForLeaderboard` → it ignores players with no matches played" line="0" assertions="2" time="0.133516"/>
+    </testsuite>
+    <testsuite name="Tests\Unit\Actions\LeagueTable\CalculatePlayerLeagueTableTest" file="tests\Unit\Actions\LeagueTable\CalculatePlayerLeagueTableTest.php" tests="5" assertions="8" errors="1" failures="1" skipped="0" time="2.184458">
+      <testcase name="`CalculatePlayerLeagueTable` → it returns players ordered by points, wins, played" class="Tests\Unit\Actions\LeagueTable\CalculatePlayerLeagueTableTest" classname="Tests.Unit.Actions.LeagueTable.CalculatePlayerLeagueTableTest" file="tests\Unit\Actions\LeagueTable\CalculatePlayerLeagueTableTest.php::`CalculatePlayerLeagueTable` → it returns players ordered by points, wins, played" line="0" assertions="3" time="0.435974"/>
+      <testcase name="`CalculatePlayerLeagueTable` → it handles draws correctly" class="Tests\Unit\Actions\LeagueTable\CalculatePlayerLeagueTableTest" classname="Tests.Unit.Actions.LeagueTable.CalculatePlayerLeagueTableTest" file="tests\Unit\Actions\LeagueTable\CalculatePlayerLeagueTableTest.php::`CalculatePlayerLeagueTable` → it handles draws correctly" line="0" assertions="0" time="0.585244">
+        <error type="Illuminate\Database\QueryException">`CalculatePlayerLeagueTable` → it handles draws correctlyIlluminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed (Connection: sqlite, Database: database/testing.sqlite, SQL: insert into "matches" ("season_id", "match_date", "bleu_goals", "salmon_goals", "lemon_goals", "green_goals", "player_of_match_id", "updated_at", "created_at") values (1, 2016-02-15, 1, 1, 0, 0, ?, 2026-01-24 18:46:16, 2026-01-24 18:46:16))&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:530
+at vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3897
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2235
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:370
+at vendor\laravel\framework\src\Illuminate\Collections\Traits\EnumeratesValues.php:271
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:365
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:321
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:315
+at tests\Unit\Actions\LeagueTable\CalculatePlayerLeagueTableTest.php:45
+Caused by
+PDOException: SQLSTATE[23000]: Integrity constraint violation: 19 FOREIGN KEY constraint failed
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:577
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:820
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:787
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:566
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:530
+at vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3897
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2235
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:370
+at vendor\laravel\framework\src\Illuminate\Collections\Traits\EnumeratesValues.php:271
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:365
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:321
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:315
+at tests\Unit\Actions\LeagueTable\CalculatePlayerLeagueTableTest.php:45</error>
+      </testcase>
+      <testcase name="`CalculatePlayerLeagueTable` → it returns all seasons if season is all" class="Tests\Unit\Actions\LeagueTable\CalculatePlayerLeagueTableTest" classname="Tests.Unit.Actions.LeagueTable.CalculatePlayerLeagueTableTest" file="tests\Unit\Actions\LeagueTable\CalculatePlayerLeagueTableTest.php::`CalculatePlayerLeagueTable` → it returns all seasons if season is all" line="0" assertions="2" time="0.365440"/>
+      <testcase name="`CalculatePlayerLeagueTable` → it ignores players with no matches played" class="Tests\Unit\Actions\LeagueTable\CalculatePlayerLeagueTableTest" classname="Tests.Unit.Actions.LeagueTable.CalculatePlayerLeagueTableTest" file="tests\Unit\Actions\LeagueTable\CalculatePlayerLeagueTableTest.php::`CalculatePlayerLeagueTable` → it ignores players with no matches played" line="0" assertions="2" time="0.108949"/>
+      <testcase name="`CalculatePlayerLeagueTable` → it does not affect player stats when editing another player" class="Tests\Unit\Actions\LeagueTable\CalculatePlayerLeagueTableTest" classname="Tests.Unit.Actions.LeagueTable.CalculatePlayerLeagueTableTest" file="tests\Unit\Actions\LeagueTable\CalculatePlayerLeagueTableTest.php::`CalculatePlayerLeagueTable` → it does not affect player stats when editing another player" line="0" assertions="1" time="0.688852">
+        <failure type="PHPUnit\Framework\ExpectationFailedException">`CalculatePlayerLeagueTable` → it does not affect player stats when editing another playerFailed asserting that null is identical to Array &amp;0 [
+    'player_id' =&gt; 1,
+    'player' =&gt; 'Alta Rolfson',
+    'played' =&gt; 1,
+    'wins' =&gt; 1,
+    'points' =&gt; 3,
+].&#13;
+at tests\Unit\Actions\LeagueTable\CalculatePlayerLeagueTableTest.php:134</failure>
+      </testcase>
+    </testsuite>
+    <testsuite name="Tests\Unit\Actions\LeagueTable\CalculateTeamLeagueTableTest" file="tests\Unit\Actions\LeagueTable\CalculateTeamLeagueTableTest.php" tests="5" assertions="18" errors="0" failures="0" skipped="0" time="3.688087">
+      <testcase name="`CalculateTeamLeagueTable` → it returns teams ordered by points, gd, gf" class="Tests\Unit\Actions\LeagueTable\CalculateTeamLeagueTableTest" classname="Tests.Unit.Actions.LeagueTable.CalculateTeamLeagueTableTest" file="tests\Unit\Actions\LeagueTable\CalculateTeamLeagueTableTest.php::`CalculateTeamLeagueTable` → it returns teams ordered by points, gd, gf" line="0" assertions="7" time="3.431368"/>
+      <testcase name="`CalculateTeamLeagueTable` → it handles draws, wins, and losses" class="Tests\Unit\Actions\LeagueTable\CalculateTeamLeagueTableTest" classname="Tests.Unit.Actions.LeagueTable.CalculateTeamLeagueTableTest" file="tests\Unit\Actions\LeagueTable\CalculateTeamLeagueTableTest.php::`CalculateTeamLeagueTable` → it handles draws, wins, and losses" line="0" assertions="4" time="0.053177"/>
+      <testcase name="`CalculateTeamLeagueTable` → it returns all seasons if season is all" class="Tests\Unit\Actions\LeagueTable\CalculateTeamLeagueTableTest" classname="Tests.Unit.Actions.LeagueTable.CalculateTeamLeagueTableTest" file="tests\Unit\Actions\LeagueTable\CalculateTeamLeagueTableTest.php::`CalculateTeamLeagueTable` → it returns all seasons if season is all" line="0" assertions="2" time="0.070452"/>
+      <testcase name="`CalculateTeamLeagueTable` → it ignores teams with no matches played" class="Tests\Unit\Actions\LeagueTable\CalculateTeamLeagueTableTest" classname="Tests.Unit.Actions.LeagueTable.CalculateTeamLeagueTableTest" file="tests\Unit\Actions\LeagueTable\CalculateTeamLeagueTableTest.php::`CalculateTeamLeagueTable` → it ignores teams with no matches played" line="0" assertions="4" time="0.065930"/>
+      <testcase name="`CalculateTeamLeagueTable` → it does not affect team stats when editing another team" class="Tests\Unit\Actions\LeagueTable\CalculateTeamLeagueTableTest" classname="Tests.Unit.Actions.LeagueTable.CalculateTeamLeagueTableTest" file="tests\Unit\Actions\LeagueTable\CalculateTeamLeagueTableTest.php::`CalculateTeamLeagueTable` → it does not affect team stats when editing another team" line="0" assertions="1" time="0.067159"/>
+    </testsuite>
+    <testsuite name="Tests\Unit\Actions\LeagueTable\GetLeagueTableColumnsTest" file="tests\Unit\Actions\LeagueTable\GetLeagueTableColumnsTest.php" tests="3" assertions="7" errors="0" failures="0" skipped="0" time="0.006477">
+      <testcase name="`GetLeagueTableColumns` → it returns player columns when isPlayers true" class="Tests\Unit\Actions\LeagueTable\GetLeagueTableColumnsTest" classname="Tests.Unit.Actions.LeagueTable.GetLeagueTableColumnsTest" file="tests\Unit\Actions\LeagueTable\GetLeagueTableColumnsTest.php::`GetLeagueTableColumns` → it returns player columns when isPlayers true" line="0" assertions="3" time="0.003715"/>
+      <testcase name="`GetLeagueTableColumns` → it returns team columns when isPlayers false" class="Tests\Unit\Actions\LeagueTable\GetLeagueTableColumnsTest" classname="Tests.Unit.Actions.LeagueTable.GetLeagueTableColumnsTest" file="tests\Unit\Actions\LeagueTable\GetLeagueTableColumnsTest.php::`GetLeagueTableColumns` → it returns team columns when isPlayers false" line="0" assertions="2" time="0.001349"/>
+      <testcase name="`GetLeagueTableColumns` → it render functions return expected values" class="Tests\Unit\Actions\LeagueTable\GetLeagueTableColumnsTest" classname="Tests.Unit.Actions.LeagueTable.GetLeagueTableColumnsTest" file="tests\Unit\Actions\LeagueTable\GetLeagueTableColumnsTest.php::`GetLeagueTableColumns` → it render functions return expected values" line="0" assertions="2" time="0.001413"/>
+    </testsuite>
+    <testsuite name="Tests\Unit\Actions\Player\CalculatePlayerAggregateStatsTest" file="Calculate Player Aggregate Stats (Tests\Unit\Actions\Player\CalculatePlayerAggregateStats)" tests="4" assertions="15" errors="0" failures="0" skipped="0" time="0.057999">
+      <testcase name="Returns zero stats for no matches" class="Tests\Unit\Actions\Player\CalculatePlayerAggregateStatsTest" classname="Tests.Unit.Actions.Player.CalculatePlayerAggregateStatsTest" file="Calculate Player Aggregate Stats (Tests\Unit\Actions\Player\CalculatePlayerAggregateStats)::Returns zero stats for no matches" line="0" assertions="4" time="0.052391"/>
+      <testcase name="Calculates stats for single win" class="Tests\Unit\Actions\Player\CalculatePlayerAggregateStatsTest" classname="Tests.Unit.Actions.Player.CalculatePlayerAggregateStatsTest" file="Calculate Player Aggregate Stats (Tests\Unit\Actions\Player\CalculatePlayerAggregateStats)::Calculates stats for single win" line="0" assertions="7" time="0.002030"/>
+      <testcase name="Calculates stats for draw" class="Tests\Unit\Actions\Player\CalculatePlayerAggregateStatsTest" classname="Tests.Unit.Actions.Player.CalculatePlayerAggregateStatsTest" file="Calculate Player Aggregate Stats (Tests\Unit\Actions\Player\CalculatePlayerAggregateStats)::Calculates stats for draw" line="0" assertions="2" time="0.001839"/>
+      <testcase name="Calculates stats for loss" class="Tests\Unit\Actions\Player\CalculatePlayerAggregateStatsTest" classname="Tests.Unit.Actions.Player.CalculatePlayerAggregateStatsTest" file="Calculate Player Aggregate Stats (Tests\Unit\Actions\Player\CalculatePlayerAggregateStats)::Calculates stats for loss" line="0" assertions="2" time="0.001740"/>
+    </testsuite>
+    <testsuite name="Tests\Unit\Actions\Stats\ValidateMatchPlayerStatsTest" file="tests\Unit\Actions\Stats\ValidateMatchPlayerStatsTest.php" tests="5" assertions="12" errors="0" failures="0" skipped="0" time="0.071814">
+      <testcase name="`ValidateMatchPlayerStats` → it requires played or reserve" class="Tests\Unit\Actions\Stats\ValidateMatchPlayerStatsTest" classname="Tests.Unit.Actions.Stats.ValidateMatchPlayerStatsTest" file="tests\Unit\Actions\Stats\ValidateMatchPlayerStatsTest.php::`ValidateMatchPlayerStats` → it requires played or reserve" line="0" assertions="2" time="0.015245"/>
+      <testcase name="`ValidateMatchPlayerStats` → it rejects both played and reserve" class="Tests\Unit\Actions\Stats\ValidateMatchPlayerStatsTest" classname="Tests.Unit.Actions.Stats.ValidateMatchPlayerStatsTest" file="tests\Unit\Actions\Stats\ValidateMatchPlayerStatsTest.php::`ValidateMatchPlayerStats` → it rejects both played and reserve" line="0" assertions="2" time="0.014529"/>
+      <testcase name="`ValidateMatchPlayerStats` → it requires team if played" class="Tests\Unit\Actions\Stats\ValidateMatchPlayerStatsTest" classname="Tests.Unit.Actions.Stats.ValidateMatchPlayerStatsTest" file="tests\Unit\Actions\Stats\ValidateMatchPlayerStatsTest.php::`ValidateMatchPlayerStats` → it requires team if played" line="0" assertions="2" time="0.014629"/>
+      <testcase name="`ValidateMatchPlayerStats` → it passes for valid input" class="Tests\Unit\Actions\Stats\ValidateMatchPlayerStatsTest" classname="Tests.Unit.Actions.Stats.ValidateMatchPlayerStatsTest" file="tests\Unit\Actions\Stats\ValidateMatchPlayerStatsTest.php::`ValidateMatchPlayerStats` → it passes for valid input" line="0" assertions="2" time="0.014376"/>
+      <testcase name="`ValidateMatchPlayerStats` → it reports multiple errors for multiple players" class="Tests\Unit\Actions\Stats\ValidateMatchPlayerStatsTest" classname="Tests.Unit.Actions.Stats.ValidateMatchPlayerStatsTest" file="tests\Unit\Actions\Stats\ValidateMatchPlayerStatsTest.php::`ValidateMatchPlayerStats` → it reports multiple errors for multiple players" line="0" assertions="4" time="0.013036"/>
+    </testsuite>
+    <testsuite name="Tests\Unit\ExampleTest" file="tests\Unit\ExampleTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.002197">
+      <testcase name="that true is true" class="Tests\Unit\ExampleTest" classname="Tests.Unit.ExampleTest" file="tests\Unit\ExampleTest.php::that true is true" line="0" assertions="1" time="0.002197"/>
+    </testsuite>
+  </testsuite>
+</testsuites>
