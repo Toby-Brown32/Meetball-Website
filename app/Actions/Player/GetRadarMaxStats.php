@@ -73,7 +73,7 @@ class GetRadarMaxStats
         END";
 
         // Use CAST to avoid integer division issues (esp. SQLite).
-        $maxPointsPerGame = DB::table('match_player as mp')
+        $maxPointsPerGameRow = DB::table('match_player as mp')
             ->join('matches as m', 'mp.match_id', '=', 'm.id')
             ->where('mp.played', 1)
             ->when($seasonId !== 'all', fn ($q) => $q->where('mp.season_id', $seasonId))
@@ -82,7 +82,9 @@ class GetRadarMaxStats
             ->groupBy('mp.player_id')
             ->orderByDesc('ppg')
             ->limit(1)
-            ->value('ppg');
+            ->first();
+
+        $maxPointsPerGame = $maxPointsPerGameRow?->ppg;
 
         $maxStats = [
             'player_goals' => (float) ($maxGoals ?? 0),

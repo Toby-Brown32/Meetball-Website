@@ -67,9 +67,13 @@ class PlayerController extends Controller
             $key = $radarKeys[$i];
             $value = isset($stats[$key]) ? $stats[$key] : 0;
             $max = $maxStats[$key] ?: 1;
+
+            $normalized = round(($value / $max) * 100, 2);
+            $normalized = max(0, min(100, $normalized));
+
             $radarStats[] = [
                 'label' => $label,
-                'value' => round(($value / $max) * 100, 2), // normalized for chart
+                'value' => $normalized, // normalized for chart
                 'raw' => $value // raw stat for tooltip
             ];
         }
@@ -86,9 +90,13 @@ class PlayerController extends Controller
                     $key = $radarKeys[$i];
                     $value = isset($compareStats[$key]) ? $compareStats[$key] : 0;
                     $max = $maxStats[$key] ?: 1;
+
+                    $normalized = round(($value / $max) * 100, 2);
+                    $normalized = max(0, min(100, $normalized));
+
                     $compareStatList[] = [
                         'label' => $label,
-                        'value' => round(($value / $max) * 100, 2),
+                        'value' => $normalized,
                         'raw' => $value
                     ];
                 }

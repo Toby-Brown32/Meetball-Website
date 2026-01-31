@@ -21,6 +21,8 @@ export function renderPlayerComparisonChart(ctx, labels, datasets) {
             scales: {
                 r: {
                     beginAtZero: true,
+                    min: 0,
+                    max: 100,
                     pointLabels: {
                         color: '#EAD63D',
                         font: { size: isSmallScreen ? 11 : 14 }
