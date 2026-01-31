@@ -9,13 +9,23 @@
         </p>
     </header>
 
-    <x-danger-button
-        x-data=""
-        x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-    >{{ __('Delete Account') }}</x-danger-button>
+        <div x-data="{ open: @js($errors->userDeletion->isNotEmpty()) }">
+            <x-primary-button
+                type="button"
+                x-on:click="open = true"
+                class="bg-red-600 hover:bg-red-500 focus:bg-red-500 active:bg-red-700 focus:ring-red-500"
+            >{{ __('Delete Account') }}</x-primary-button>
 
-    <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
-        <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
+            <div
+                x-cloak
+                x-show="open"
+                x-on:keydown.escape.window="open = false"
+                class="fixed inset-0 z-50 flex items-center justify-center"
+            >
+                <div class="fixed inset-0 bg-gray-500/75" x-on:click="open = false"></div>
+
+                <div class="relative w-full max-w-lg mx-4 bg-white rounded-lg shadow-xl">
+                    <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
             @csrf
             @method('delete')
 
@@ -42,14 +52,20 @@
             </div>
 
             <div class="mt-6 flex justify-end">
-                <x-secondary-button x-on:click="$dispatch('close')">
+                <button
+                    type="button"
+                    x-on:click="open = false"
+                    class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150"
+                >
                     {{ __('Cancel') }}
-                </x-secondary-button>
+                </button>
 
-                <x-danger-button class="ms-3">
+                <x-primary-button class="ms-3 bg-red-600 hover:bg-red-500 focus:bg-red-500 active:bg-red-700 focus:ring-red-500">
                     {{ __('Delete Account') }}
-                </x-danger-button>
+                </x-primary-button>
             </div>
         </form>
-    </x-modal>
+            </div>
+        </div>
+    </div>
 </section>
