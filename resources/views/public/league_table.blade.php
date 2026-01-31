@@ -13,19 +13,24 @@
                     League Table
                 @endif
             </h3>
-            <form method="GET" action="" class="flex flex-wrap gap-2 items-center">
-                <label for="type" class="font-semibold mr-1">Table:</label>
-                <select name="type" id="type" onchange="this.form.submit()" class="bg-gray-800 text-white border border-gray-700 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
-                    <option value="teams" {{ (request('type', $type ?? 'teams') == 'teams') ? 'selected' : '' }}>Teams</option>
-                    <option value="players" {{ (request('type', $type ?? 'teams') == 'players') ? 'selected' : '' }}>Players</option>
-                </select>
-                <label for="season_id" class="font-semibold ml-4 mr-1">Season:</label>
-                <select name="season_id" id="season_id" onchange="this.form.submit()" class="bg-gray-800 text-white border border-gray-700 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
-                    <option value="all" {{ (request('season_id', $season) == 'all') ? 'selected' : '' }}>All Seasons</option>
-                    @foreach($seasons as $s)
-                        <option value="{{ $s->id }}" {{ $s->id == $season ? 'selected' : '' }}>{{ $s->name }}</option>
-                    @endforeach
-                </select>
+            <form method="GET" action="" class="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-2 sm:items-center">
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <label for="type" class="font-semibold whitespace-nowrap">Table:</label>
+                    <select name="type" id="type" onchange="this.form.submit()" class="w-full sm:w-auto bg-gray-800 text-white border border-gray-700 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+                        <option value="teams" {{ (request('type', $type ?? 'teams') == 'teams') ? 'selected' : '' }}>Teams</option>
+                        <option value="players" {{ (request('type', $type ?? 'teams') == 'players') ? 'selected' : '' }}>Players</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <label for="season_id" class="font-semibold whitespace-nowrap">Season:</label>
+                    <select name="season_id" id="season_id" onchange="this.form.submit()" class="w-full sm:w-auto bg-gray-800 text-white border border-gray-700 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+                        <option value="all" {{ (request('season_id', $season) == 'all') ? 'selected' : '' }}>All Seasons</option>
+                        @foreach($seasons as $s)
+                            <option value="{{ $s->id }}" {{ $s->id == $season ? 'selected' : '' }}>{{ $s->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
             </form>
         </div>
         <x-data-table :rows="$table" :columns="$columns" highlight-first="true" />

@@ -29,6 +29,9 @@
                     <a href="{{ route('admin.weekly_draw') }}" class="hover:text-[#3F3923] transition">
                         Weekly Draw
                     </a>
+                    <a href="{{ route('admin.feedback.index') }}" class="hover:text-[#3F3923] transition">
+                        Feedback
+                    </a>
                     <a href="{{ route('admin.stats_inputter') }}" class="hover:text-[#3F3923] transition">
                         Stats Inputter
                     </a>
@@ -79,6 +82,9 @@
             <nav class="px-4 py-4 space-y-3 font-medium">
                 <a href="{{ route('admin.weekly_draw') }}" class="block hover:text-[#3F3923] transition">
                     Weekly Draw
+                </a>
+                <a href="{{ route('admin.feedback.index') }}" class="block hover:text-[#3F3923] transition">
+                    Feedback
                 </a>
                 <a href="{{ route('admin.stats_inputter') }}" class="block hover:text-[#3F3923] transition">
                     Stats Inputter

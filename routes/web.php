@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminFeedbackController;
 use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\LeagueTableController;
 use App\Http\Controllers\PlayerController;
@@ -24,6 +25,10 @@ Route::middleware(['auth:admin', 'admin.only'])->group(function () {
     Route::get('/admin', function () {
         return redirect(route('admin.weekly_draw'));
     });
+
+    Route::get('/admin/feedback', [AdminFeedbackController::class, 'index'])->name('admin.feedback.index');
+    Route::get('/admin/feedback/{feedback}', [AdminFeedbackController::class, 'show'])->name('admin.feedback.show');
+
     Route::match(['get', 'post'], '/weekly_draw', [AdminController::class, 'weeklyDraw'])->name('admin.weekly_draw');
     Route::get('/stats_inputter', [AdminController::class, 'statsInputter'])->name('admin.stats_inputter');
     Route::post('/stats_inputter', [AdminController::class, 'storeMatchPlayerStats'])->name('admin.stats_inputter.store');
