@@ -16,7 +16,7 @@ class Player extends Model
 
     public function matches(): BelongsToMany
     {
-        return $this->belongsToMany(FootballMatch::class, 'match_player')->withPivot([
+        return $this->belongsToMany(FootballMatch::class, 'match_player', 'player_id', 'match_id')->withPivot([
             'team',
             'played',
             'reserve',

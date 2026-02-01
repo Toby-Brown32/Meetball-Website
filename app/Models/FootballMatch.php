@@ -32,7 +32,7 @@ class FootballMatch extends Model
 
     public function players(): BelongsToMany
     {
-        return $this->belongsToMany(Player::class, 'match_player')->withPivot([
+        return $this->belongsToMany(Player::class, 'match_player', 'match_id', 'player_id')->withPivot([
             'team',
             'played',
             'reserve',

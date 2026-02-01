@@ -35,8 +35,8 @@
                     <a href="{{ route('admin.stats_inputter') }}" class="hover:text-[#3F3923] transition">
                         Stats Inputter
                     </a>
-                    <a href="{{ route('admin.add_players') }}" class="hover:text-[#3F3923] transition">
-                        Add Players
+                    <a href="{{ route('admin.players.index') }}" class="hover:text-[#3F3923] transition">
+                        Players
                     </a>
                     <a href="{{ route('admin.new_season') }}" class="hover:text-[#3F3923] transition">
                         New Season
@@ -89,8 +89,8 @@
                 <a href="{{ route('admin.stats_inputter') }}" class="block hover:text-[#3F3923] transition">
                     Stats Inputter
                 </a>
-                <a href="{{ route('admin.add_players') }}" class="block hover:text-[#3F3923] transition">
-                    Add Players
+                <a href="{{ route('admin.players.index') }}" class="block hover:text-[#3F3923] transition">
+                    Players
                 </a>
                 <a href="{{ route('admin.new_season') }}" class="block hover:text-[#3F3923] transition">
                     New Season

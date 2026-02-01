@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminFeedbackController;
 use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\LeagueTableController;
 use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\Admin\AdminPlayerController;
 
 // Redirect root URL to leaderboard
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -29,11 +30,21 @@ Route::middleware(['auth:admin', 'admin.only'])->group(function () {
     Route::get('/admin/feedback', [AdminFeedbackController::class, 'index'])->name('admin.feedback.index');
     Route::get('/admin/feedback/{feedback}', [AdminFeedbackController::class, 'show'])->name('admin.feedback.show');
 
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('/players', [AdminPlayerController::class, 'index'])->name('players.index');
+        Route::get('/players/create', [AdminPlayerController::class, 'create'])->name('players.create');
+        Route::post('/players', [AdminPlayerController::class, 'store'])->name('players.store');
+        Route::get('/players/{player}/edit', [AdminPlayerController::class, 'edit'])->name('players.edit');
+        Route::put('/players/{player}', [AdminPlayerController::class, 'update'])->name('players.update');
+        Route::delete('/players/{player}', [AdminPlayerController::class, 'destroy'])->name('players.destroy');
+    });
+
     Route::match(['get', 'post'], '/weekly_draw', [AdminController::class, 'weeklyDraw'])->name('admin.weekly_draw');
     Route::get('/stats_inputter', [AdminController::class, 'statsInputter'])->name('admin.stats_inputter');
     Route::post('/stats_inputter', [AdminController::class, 'storeMatchPlayerStats'])->name('admin.stats_inputter.store');
-    Route::get('/add_players', [AdminController::class, 'addPlayers'])->name('admin.add_players');
-    Route::post('/add_players', [AdminController::class, 'storePlayer'])->name('admin.add_players.store');
+    // Legacy aliases (kept for backward compatibility)
+    Route::get('/add_players', [AdminPlayerController::class, 'create'])->name('admin.add_players');
+    Route::post('/add_players', [AdminPlayerController::class, 'store'])->name('admin.add_players.store');
     Route::get('/new_season', [AdminController::class, 'newSeason'])->name('admin.new_season');
     Route::post('/new_season', [AdminController::class, 'createSeason'])->name('admin.new_season.create');
     Route::get('/match_played', [AdminController::class, 'matchPlayed'])->name('admin.match_played');
