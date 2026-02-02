@@ -2,9 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AdminFeedbackController;
 use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\LeagueTableController;
 use App\Http\Controllers\PlayerController;
@@ -17,8 +15,6 @@ Route::get('/leaderboard/{stat}', [LeaderboardController::class, 'stat'])->name(
 Route::get('/league-table', [LeagueTableController::class, 'index'])->name('league.table');
 Route::get('/players', [PlayerController::class, 'index'])->name('players.index');
 Route::get('/players/{id}', [PlayerController::class, 'show'])->name('players.show');
-Route::get('/feedback', [FeedbackController::class, 'show'])->name('feedback');
-Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
 
 
 // Admin routes (admin role only)
@@ -26,9 +22,6 @@ Route::middleware(['auth:admin', 'admin.only'])->group(function () {
     Route::get('/admin', function () {
         return redirect(route('admin.weekly_draw'));
     });
-
-    Route::get('/admin/feedback', [AdminFeedbackController::class, 'index'])->name('admin.feedback.index');
-    Route::get('/admin/feedback/{feedback}', [AdminFeedbackController::class, 'show'])->name('admin.feedback.show');
 
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/players', [AdminPlayerController::class, 'index'])->name('players.index');

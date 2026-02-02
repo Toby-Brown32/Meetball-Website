@@ -51,9 +51,41 @@
                     If that sounds like your kind of football, and your kind of people, we’d love to hear from you.
                 </p>
                 <div class="flex flex-col md:flex-row gap-4 justify-center items-center mt-4">
-                    <a href="tel:07866744207" class="px-6 py-4 bg-[#EAD63D] text-[#50482D] font-semibold text-lg rounded-full shadow-lg hover:bg-[#50482D] hover:text-[#EAD63D] transition">Contact Andy Brown: 07866 744207</a>
-                    <a href="mailto:andy@3dfd.com" class="px-6 py-4 bg-[#EAD63D] text-[#50482D] font-semibold text-lg rounded-full shadow-lg hover:bg-[#50482D] hover:text-[#EAD63D] transition">Email: andy@3dfd.com</a>
+                    <a
+                        href="#"
+                        x-data="{
+                            rev: '70244766870',
+                            get raw() { return this.rev.split('').reverse().join(''); },
+                            get pretty() {
+                                const n = this.raw;
+                                return n.length === 11 ? (n.slice(0, 5) + ' ' + n.slice(5)) : n;
+                            },
+                            get href() { return 'tel:' + this.raw; },
+                        }"
+                        :href="href"
+                        :aria-label="'Call Andy Brown: ' + pretty"
+                        class="px-6 py-4 bg-[#EAD63D] text-[#50482D] font-semibold text-lg rounded-full shadow-lg hover:bg-[#50482D] hover:text-[#EAD63D] transition"
+                        x-text="'Contact Andy Brown: ' + pretty"
+                    ></a>
+
+                    <a
+                        href="#"
+                        x-data="{
+                            rev: 'moc.dfd3@ydna',
+                            get email() { return this.rev.split('').reverse().join(''); },
+                            get href() { return 'mailto:' + this.email; },
+                        }"
+                        :href="href"
+                        :aria-label="'Email Andy Brown: ' + email"
+                        class="px-6 py-4 bg-[#EAD63D] text-[#50482D] font-semibold text-lg rounded-full shadow-lg hover:bg-[#50482D] hover:text-[#EAD63D] transition"
+                        x-text="'Email: ' + email"
+                    ></a>
                 </div>
+                <noscript>
+                    <div class="mt-4 text-sm text-white/70">
+                        Enable JavaScript to view contact details.
+                    </div>
+                </noscript>
             </div>
         </x-animated-section>
     </div>

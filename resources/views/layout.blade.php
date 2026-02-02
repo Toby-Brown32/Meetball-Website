@@ -52,9 +52,6 @@
                 </nav>
 
                 <div class="hidden md:flex absolute right-0 top-0 h-16 pr-4 items-center">
-                    <a href="{{ route('feedback') }}" class="{{ $navBase }} {{ request()->routeIs('feedback*') ? $navActive : $navInactive }}">
-                        Feedback
-                    </a>
                 </div>
 
                 <button
@@ -97,9 +94,6 @@
                 </a>
                 <a href="{{ route('players.index') }}" @click="mobileOpen = false" class="{{ $mobileNavBase }} {{ request()->routeIs('players.*') ? $mobileNavActive : $mobileNavInactive }}">
                     Players
-                </a>
-                <a href="{{ route('feedback') }}" @click="mobileOpen = false" class="{{ $mobileNavBase }} {{ request()->routeIs('feedback*') ? $mobileNavActive : $mobileNavInactive }}">
-                    Feedback
                 </a>
             </nav>
         </div>

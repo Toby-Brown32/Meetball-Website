@@ -5,7 +5,7 @@ declare(strict_types=1);
 use App\Models\Admin;
 use App\Models\Feedback;
 
-it('shows the feedback index page for an admin', function () {
+it('does not allow access to the feedback index page', function () {
     $admin = Admin::factory()->create();
     $this->actingAs($admin, 'admin');
 
@@ -15,14 +15,12 @@ it('shows the feedback index page for an admin', function () {
         'feedback' => 'Hello from the test suite',
     ]);
 
-    $response = $this->get(route('admin.feedback.index'));
+    $response = $this->get('/admin/feedback');
 
-    $response->assertStatus(200);
-    $response->assertSee('Feedback');
-    $response->assertSee('Hello from the test suite');
+    $response->assertStatus(404);
 });
 
-it('shows a single feedback item for an admin', function () {
+it('does not allow access to a single feedback item page', function () {
     $admin = Admin::factory()->create();
     $this->actingAs($admin, 'admin');
 
@@ -32,12 +30,7 @@ it('shows a single feedback item for an admin', function () {
         'feedback' => "Line one\nLine two",
     ]);
 
-    $response = $this->get(route('admin.feedback.show', $feedback));
+    $response = $this->get('/admin/feedback/' . $feedback->id);
 
-    $response->assertStatus(200);
-    $response->assertSee('Feedback Details');
-    $response->assertSee('Jane Doe');
-    $response->assertSee('jane@example.com');
-    $response->assertSee('Line one');
-    $response->assertSee('Line two');
+    $response->assertStatus(404);
 });
