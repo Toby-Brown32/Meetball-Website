@@ -36,19 +36,19 @@
         <x-animated-section :delay="1000">
             <div class="mb-10 flex flex-col items-center justify-center text-center">
                 <p class="text-lg md:text-xl text-white/90 font-medium mb-6">
-                    Meetball was founded in October 2013 as a place for digital animals to meet, switch off, and play football.
+                    Meetball is a community for people working in and around the creative agency world across BCP (Bournemouth, Christchurch and Poole).
                 </p>
                 <p class="text-base md:text-lg text-white/80 mb-4">
-                    It’s a community for people working in the creative agency world across BCP (Bournemouth, Christchurch and Poole). Designers, developers, copywriters, strategists, account teams, alongside client-side marketers, digital marketers, and software engineers and more.
+                    Founded in October 2013, it’s a place for digital animals to switch off, meet like-minded people, and play football.
                 </p>
                 <p class="text-base md:text-lg text-white/80 mb-4">
-                    Every Thursday evening all year round we meet at Littledown astroturf for a one hour friendly 8-a-side game. Meetball was set up to create an inclusive, welcoming space where people from our industry (and adjacent client and business roles) can meet like-minded peers, make new connections, and build genuine relationships beyond the day job.
+                    Every Thursday evening, all year round, we meet at Littledown astroturf for a friendly one-hour, 8-a-side game. Designers, copywriters, strategists, account teams, client-side marketers, software engineers and plenty more are welcome.
                 </p>
                 <p class="text-base md:text-lg text-white/80 mb-4">
-                    Our approach to the beautiful game is enjoyment over winning. We play without referees, relying on mutual respect, honesty, and kindness to keep games fair and fun. Teams are randomly drawn each week from everyone available to play, keeping things fresh, social, and inclusive.
+                    We play for enjoyment, not results (but we do track some stats for fun). There are no referees, teams are randomly drawn each week, and games are built on trust, respect and kindness. The result is football that’s social, inclusive, and genuinely good fun.
                 </p>
                 <p class="text-base md:text-lg text-white/80 mb-6">
-                    If that sounds like your kind of football, and your kind of people, we’d love to hear from you.
+                    If that sounds like your kind of football, and your kind of people, you’ll fit right in.
                 </p>
                 <div class="flex flex-col md:flex-row gap-4 justify-center items-center mt-4">
                     <a
