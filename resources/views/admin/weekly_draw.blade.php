@@ -29,7 +29,12 @@
 		<h3 class="text-xl font-semibold mb-2">Guaranteed Players</h3>
 		<ul class="list-disc ml-6">
 			@foreach($teams['guaranteed'] as $player)
-				<li>{{ $player->forename }} {{ $player->surname }}</li>
+				<li>
+					{{ $player->forename }} {{ $player->surname }}
+					@if(!empty($player->guaranteed_reasons))
+						<span class="text-sm text-gray-500">({{ implode(', ', $player->guaranteed_reasons) }})</span>
+					@endif
+				</li>
 			@endforeach
 		</ul>
 	</div>
@@ -57,7 +62,12 @@
 			<h3 class="text-xl font-semibold mb-2">Reserves (Drawn Order)</h3>
 			<ul class="list-disc ml-6">
 				@foreach($teams['reserves'] as $player)
-					<li>{{ $player->forename }} {{ $player->surname }}</li>
+					<li>
+						{{ $player->forename }} {{ $player->surname }}
+						@if(!empty($player->is_reserve_overflow))
+							<span class="text-sm text-gray-500">({{ implode(', ', $player->guaranteed_reasons) }})</span>
+						@endif
+					</li>
 				@endforeach
 			</ul>
 		</div>

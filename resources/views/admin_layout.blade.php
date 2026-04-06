@@ -32,6 +32,9 @@
                     <a href="{{ route('admin.stats_inputter') }}" class="hover:text-[#3F3923] transition">
                         Stats Inputter
                     </a>
+                    <a href="{{ route('admin.matches.index') }}" class="hover:text-[#3F3923] transition">
+                        Matches
+                    </a>
                     <a href="{{ route('admin.players.index') }}" class="hover:text-[#3F3923] transition">
                         Players
                     </a>
@@ -82,6 +85,9 @@
                 </a>
                 <a href="{{ route('admin.stats_inputter') }}" class="block hover:text-[#3F3923] transition">
                     Stats Inputter
+                </a>
+                <a href="{{ route('admin.matches.index') }}" class="block hover:text-[#3F3923] transition">
+                    Matches
                 </a>
                 <a href="{{ route('admin.players.index') }}" class="block hover:text-[#3F3923] transition">
                     Players

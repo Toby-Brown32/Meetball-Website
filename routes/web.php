@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\AdminPlayerController;
 
 // Redirect root URL to leaderboard
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/matches', [DashboardController::class, 'matches'])->name('matches.index');
+Route::get('/matches/{match}', [DashboardController::class, 'showMatch'])->name('matches.show');
 Route::get('/leaderboard', [LeaderboardController::class, 'index'])->name('leaderboard.index');
 Route::get('/leaderboard/{stat}', [LeaderboardController::class, 'stat'])->name('leaderboard.stat');
 Route::get('/league-table', [LeagueTableController::class, 'index'])->name('league.table');
@@ -30,6 +32,13 @@ Route::middleware(['auth:admin', 'admin.only'])->group(function () {
         Route::get('/players/{player}/edit', [AdminPlayerController::class, 'edit'])->name('players.edit');
         Route::put('/players/{player}', [AdminPlayerController::class, 'update'])->name('players.update');
         Route::delete('/players/{player}', [AdminPlayerController::class, 'destroy'])->name('players.destroy');
+
+        Route::prefix('matches')->name('matches.')->group(function () {
+            Route::get('/', [AdminController::class, 'matchesIndex'])->name('index');
+            Route::get('/{match}/edit', [AdminController::class, 'editMatch'])->name('edit');
+            Route::put('/{match}', [AdminController::class, 'updateMatch'])->name('update');
+            Route::delete('/{match}', [AdminController::class, 'destroyMatch'])->name('destroy');
+        });
     });
 
     Route::match(['get', 'post'], '/weekly_draw', [AdminController::class, 'weeklyDraw'])->name('admin.weekly_draw');

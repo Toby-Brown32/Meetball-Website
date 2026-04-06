@@ -40,6 +40,9 @@
                     <a href="{{ route('dashboard') }}" class="{{ $navBase }} {{ request()->routeIs('dashboard') ? $navActive : $navInactive }}">
                         Dashboard
                     </a>
+                    <a href="{{ route('matches.index') }}" class="{{ $navBase }} {{ request()->routeIs('matches.*') ? $navActive : $navInactive }}">
+                        Matches
+                    </a>
                     <a href="{{ route('leaderboard.index') }}" class="{{ $navBase }} {{ request()->routeIs('leaderboard.*') ? $navActive : $navInactive }}">
                         Leaderboards
                     </a>
@@ -85,6 +88,9 @@
             <nav class="px-4 py-4 space-y-2">
                 <a href="{{ route('dashboard') }}" @click="mobileOpen = false" class="{{ $mobileNavBase }} {{ request()->routeIs('dashboard') ? $mobileNavActive : $mobileNavInactive }}">
                     Dashboard
+                </a>
+                <a href="{{ route('matches.index') }}" @click="mobileOpen = false" class="{{ $mobileNavBase }} {{ request()->routeIs('matches.*') ? $mobileNavActive : $mobileNavInactive }}">
+                    Matches
                 </a>
                 <a href="{{ route('leaderboard.index') }}" @click="mobileOpen = false" class="{{ $mobileNavBase }} {{ request()->routeIs('leaderboard.*') ? $mobileNavActive : $mobileNavInactive }}">
                     Leaderboards

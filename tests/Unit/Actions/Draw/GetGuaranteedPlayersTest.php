@@ -45,6 +45,34 @@ describe('GetGuaranteedPlayers', function () {
         expect($guaranteedIds)->toContain($missed->id);
     });
 
+    it('attaches guarantee reasons to players', function () {
+        $missed = Player::factory()->create(['missed_games' => 2]);
+        $players = Player::factory()->count(5)->create(['missed_games' => 0]);
+        $action = new GetGuaranteedPlayers();
+        $result = $action(Player::all());
+
+        $matched = $result['guaranteed']->firstWhere('id', $missed->id);
+        expect($matched)->not->toBeNull();
+        expect($matched->guaranteed_reasons)->toContain('Missed games (2)');
+    });
+
+    it('caps drawn players at 16 and prioritizes higher missed_games', function () {
+        $players = collect();
+        foreach (range(1, 18) as $missedGames) {
+            $players->push(Player::factory()->create(['missed_games' => $missedGames]));
+        }
+
+        $action = new GetGuaranteedPlayers();
+        $result = $action(Player::all());
+
+        expect($result['drawn']->count())->toBe(16);
+        expect($result['guaranteed']->count())->toBe(16);
+        expect($result['drawn']->pluck('missed_games'))->not->toContain(1);
+        expect($result['drawn']->pluck('missed_games'))->not->toContain(2);
+        expect($result['drawn']->pluck('missed_games'))->toContain(18);
+        expect($result['drawn']->pluck('missed_games'))->toContain(17);
+    });
+
     it('guarantees first-time players (no match_player record)', function () {
         $firstTimer = Player::factory()->create();
         $others = Player::factory()->count(5)->create();
@@ -97,6 +125,51 @@ describe('GetGuaranteedPlayers', function () {
         expect($result['drawn']->count())->toBe(16);
         expect($result['reserves']->count())->toBe(4);
         expect($result['guaranteed']->count())->toBe(0);
+    });
+
+    it('guarantees a player whose most recent match was as reserve over missed_games candidates', function () {
+        $reservePlayer = Player::factory()->create(['missed_games' => 0]);
+        $missedPlayers = Player::factory()->count(18)->create(['missed_games' => 3]);
+
+        $season = \App\Models\Season::factory()->create();
+        $match = \App\Models\FootballMatch::factory()->create([
+            'season_id' => $season->id,
+            'match_date' => now(),
+        ]);
+
+        DB::table('match_player')->insert([
+            'match_id' => $match->id,
+            'player_id' => $reservePlayer->id,
+            'team' => 'Les Bleus',
+            'played' => false,
+            'reserve' => true,
+            'goals' => 0,
+            'assists' => 0,
+            'season_id' => $season->id,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        foreach ($missedPlayers as $player) {
+            DB::table('match_player')->insert([
+                'match_id' => $match->id,
+                'player_id' => $player->id,
+                'team' => 'Les Bleus',
+                'played' => true,
+                'reserve' => false,
+                'goals' => 0,
+                'assists' => 0,
+                'season_id' => $season->id,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
+
+        $players = Player::all();
+        $action = new GetGuaranteedPlayers();
+        $result = $action($players);
+
+        expect($result['guaranteed']->pluck('id'))->toContain($reservePlayer->id);
     });
 
     it('no duplicates in guaranteed/drawn', function () {

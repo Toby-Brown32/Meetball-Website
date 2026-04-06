@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\FootballMatch;
 use App\Models\Season;
 
@@ -50,6 +51,57 @@ class DashboardController extends Controller
             'currentSeason' => $currentSeason,
             'matchesPlayed' => $matchesPlayed,
             'goalsScored' => $goalsScored
+        ]);
+    }
+
+    /**
+     * Show the matches index page.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\View\View
+     */
+    public function matches(Request $request)
+    {
+        $seasonId = $request->input('season_id');
+        $seasons = Season::orderByDesc('start_date')->get();
+
+        $query = FootballMatch::with(['season', 'playerOfTheMatch'])
+            ->with(['players' => function ($query) {
+                $query->orderBy('team')
+                      ->orderBy('played', 'desc')
+                      ->orderBy('reserve');
+            }]);
+
+        if ($seasonId && $seasonId !== 'all') {
+            $query->where('season_id', $seasonId);
+        }
+
+        $matches = $query->orderByDesc('match_date')
+                         ->paginate(12);
+
+        return view('matches.index')->with([
+            'matches' => $matches,
+            'seasons' => $seasons,
+            'selectedSeason' => $seasonId ?? 'all'
+        ]);
+    }
+
+    /**
+     * Show a specific match details page.
+     *
+     * @param \App\Models\FootballMatch $match
+     * @return \Illuminate\View\View
+     */
+    public function showMatch(FootballMatch $match)
+    {
+        $match->load(['season', 'playerOfTheMatch', 'players' => function ($query) {
+            $query->orderBy('team')
+                  ->orderBy('played', 'desc')
+                  ->orderBy('reserve');
+        }]);
+
+        return view('matches.show')->with([
+            'match' => $match
         ]);
     }
 }

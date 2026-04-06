@@ -215,4 +215,133 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Match added successfully');
     }
+
+    /**
+     * Show all matches with season filtering.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\View\View
+     */
+    public function matchesIndex(Request $request)
+    {
+        $seasonId = $request->input('season_id');
+        $matches = FootballMatch::with('season')
+            ->when($seasonId, fn ($q) => $q->where('season_id', $seasonId))
+            ->orderByDesc('match_date')
+            ->get();
+
+        $seasons = Season::orderByDesc('created_at')->get();
+
+        return view('admin.matches.index', compact('matches', 'seasons', 'seasonId'));
+    }
+
+    /**
+     * Show and edit a specific match with all player stats.
+     *
+     * @param \App\Models\FootballMatch $match
+     * @return \Illuminate\View\View
+     */
+    public function editMatch(FootballMatch $match)
+    {
+        $match->load('season');
+        $players = Player::orderBy('surname')->orderBy('forename')->get();
+
+        $matchPlayers = \DB::table('match_player')
+            ->where('match_id', $match->id)
+            ->get()
+            ->keyBy('player_id');
+
+        return view('admin.matches.edit', compact('match', 'players', 'matchPlayers'));
+    }
+
+    /**
+     * Update match player stats for a specific match.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\FootballMatch $match
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateMatch(Request $request, FootballMatch $match)
+    {
+        $validated = $request->validate([
+            'score' => 'required|array',
+            'score.opponent' => 'required|in:Les Bleus,Lemons',
+            'score.salmon_goals' => 'required|integer|min:0',
+            'score.opponent_goals' => 'required|integer|min:0',
+            'player_of_match_id' => 'nullable|integer|exists:players,id',
+            'players' => 'array',
+            'players.*' => 'array',
+            'selected' => 'array',
+        ]);
+
+        $players = $validated['players'] ?? [];
+        $selected = $validated['selected'] ?? [];
+        $playerOfMatchId = $validated['player_of_match_id'] ?? null;
+
+        if ($playerOfMatchId && !in_array($playerOfMatchId, $selected)) {
+            $playerOfMatchId = null;
+        }
+
+        $match->salmon_goals = $validated['score']['salmon_goals'];
+        if ($validated['score']['opponent'] === 'Lemons') {
+            $match->lemon_goals = $validated['score']['opponent_goals'];
+            $match->bleu_goals = null;
+        } else {
+            $match->bleu_goals = $validated['score']['opponent_goals'];
+            $match->lemon_goals = null;
+        }
+        $match->player_of_match_id = $playerOfMatchId;
+        $match->save();
+
+        foreach ($selected as $playerId) {
+            $data = $players[$playerId] ?? [];
+            $played = !empty($data['played']);
+            $reserve = !empty($data['reserve']);
+
+            \DB::table('match_player')->updateOrInsert(
+                [
+                    'match_id' => $match->id,
+                    'player_id' => $playerId,
+                ],
+                [
+                    'team' => $data['team'] ?? null,
+                    'played' => $played,
+                    'reserve' => $reserve,
+                    'goals' => $data['goals'] ?? 0,
+                    'assists' => $data['assists'] ?? 0,
+                    'player_of_match' => $playerOfMatchId == $playerId,
+                    'season_id' => $match->season_id,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]
+            );
+
+            if ($reserve && !$played) {
+                \App\Models\Player::where('id', $playerId)->increment('missed_games');
+            }
+        }
+
+        // Remove players not in selected
+        \DB::table('match_player')
+            ->where('match_id', $match->id)
+            ->whereNotIn('player_id', $selected)
+            ->delete();
+
+        return redirect()->route('admin.matches.index')->with('success', 'Match updated successfully');
+    }
+
+    /**
+     * Delete a match and its player stats.
+     *
+     * @param \App\Models\FootballMatch $match
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroyMatch(FootballMatch $match)
+    {
+        \DB::table('match_player')->where('match_id', $match->id)->delete();
+        $match->delete();
+
+        return redirect()->route('admin.matches.index')->with('success', 'Match deleted successfully');
+    }
 }
+
