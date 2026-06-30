@@ -31,17 +31,14 @@
 	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 		@foreach($matches as $match)
 			<div class="bg-gradient-to-br from-gray-800 to-gray-700 rounded-lg p-6 border border-amber-500/50 hover:border-amber-400/60 transition hover:shadow-lg hover:shadow-amber-500/30">
-				<!-- Date -->
 				<div class="text-gray-300 text-sm mb-4">
 					{{ \Carbon\Carbon::parse($match->match_date)->format('l, M d, Y') }}
 				</div>
 
-				<!-- Season -->
 				<div class="inline-block bg-yellow-700 text-yellow-50 text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wide">
 					{{ $match->season?->name ?? 'No Season' }}
 				</div>
 
-				<!-- Score -->
 				<div class="mb-6">
 					<div class="grid grid-cols-2 gap-4 mb-4">
 						<div class="bg-rose-900/60 rounded-lg p-4 border border-rose-500/70">
@@ -62,7 +59,6 @@
 					</div>
 				</div>
 
-				<!-- MOTM -->
 				@if($match->player_of_match_id)
 					<div class="mb-4 p-3 bg-amber-900/60 rounded-lg border border-amber-500/70">
 						<div class="text-xs text-amber-200 font-bold uppercase tracking-wider mb-1">Player of the Match</div>
@@ -70,14 +66,12 @@
 					</div>
 				@endif
 
-				<!-- Player Count -->
 				<div class="flex items-center justify-between mb-4 text-sm text-gray-300">
 					<span>
 						<strong>{{ \DB::table('match_player')->where('match_id', $match->id)->count() }}</strong> players
 					</span>
 				</div>
 
-				<!-- Edit Button -->
 				<a href="{{ route('admin.matches.edit', $match) }}" class="block w-full text-center px-4 py-3 bg-gradient-to-r from-yellow-600 to-yellow-700 text-gray-900 font-bold rounded-lg hover:from-yellow-500 hover:to-yellow-600 transition shadow-lg hover:shadow-yellow-500/30">
 					Edit Match
 				</a>
