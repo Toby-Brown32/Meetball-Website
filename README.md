@@ -1,61 +1,48 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Meetball Website
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Meetball is a full-stack Laravel web application built to support the Meetball football community. It provides a central hub for managing matches, tracking player statistics, and viewing historical performance data.
 
-## About Laravel
+The application was designed to replace manual spreadsheets and simplify the weekly administration of games, while giving players an engaging way to explore their own statistics and the history of the community.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+About Meetball
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Meetball is a community for people working in and around the creative agency world across Bournemouth, Christchurch and Poole (BCP).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Founded in October 2013, it brings together designers, developers, copywriters, marketers, strategists, account managers and many others for a friendly game of football every Thursday evening.
 
-## Learning Laravel
+The emphasis is on enjoyment rather than competition. Teams are randomly drawn each week, there are no referees, and games are built on trust, respect and kindness. While results are secondary, the community enjoys tracking statistics and celebrating milestones, which inspired the creation of this application.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Features
+Public Website
+Player profiles and career statistics
+League tables and leaderboards
+Match history
+Individual match reports
+Data visualisations and performance graphs
+Responsive design for desktop and mobile
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Admin Portal
+Player management
+Match management
+Team allocation tools
+Weekly fixture administration
+CRUD interfaces for all core data
+Search and filtering
+Activity logging
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Tech Stack
+Laravel
+PHP
+Livewire
+Alpine.js
+Tailwind CSS
+SQLite
+Chart.js
+Vite
+My Role
 
-## Laravel Sponsors
+This project was designed, developed and deployed solely by Toby Brown.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+The goal of the project is to make organising weekly football as effortless as possible while giving members an enjoyable way to explore their statistics and the history of the community.
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Rather than relying on spreadsheets and manual record keeping, the application provides a single place to manage fixtures, players and historical data, helping organisers spend less time on administration and more time enjoying the game.
