@@ -63,6 +63,14 @@
                 @enderror
             </div>
 
+            <div class="mb-4">
+                <label for="missed_games" class="block text-sm font-medium">Missed Games</label>
+                <input type="number" name="missed_games" id="missed_games" min="0" value="{{ old('missed_games', $player->missed_games) }}" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 bg-white text-gray-900">
+                @error('missed_games')
+                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                @enderror
+            </div>
+
             <button type="submit" class="px-4 py-2 bg-yellow-500 text-black rounded hover:bg-yellow-600">
                 Save Changes
             </button>

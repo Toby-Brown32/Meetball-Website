@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\UpdatePlayerRequest;
 use App\Models\Player;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 
 class AdminPlayerController extends Controller
 {
@@ -30,6 +31,7 @@ class AdminPlayerController extends Controller
     {
         $validated = $request->validated();
         $validated['nickname'] = $validated['nickname'] ?: null;
+        $validated['missed_games'] = isset($validated['missed_games']) ? (int) $validated['missed_games'] : 0;
 
         Player::create($validated);
 
@@ -45,6 +47,7 @@ class AdminPlayerController extends Controller
     {
         $validated = $request->validated();
         $validated['nickname'] = $validated['nickname'] ?: null;
+        $validated['missed_games'] = isset($validated['missed_games']) ? (int) $validated['missed_games'] : $player->missed_games;
 
         $player->update($validated);
 
@@ -60,5 +63,12 @@ class AdminPlayerController extends Controller
         $player->delete();
 
         return redirect()->route('admin.players.index')->with('success', 'Player deleted successfully');
+    }
+
+    public function resetMissed(Request $request): RedirectResponse
+    {
+        Player::query()->update(['missed_games' => 0]);
+
+        return redirect()->route('admin.players.index')->with('success', 'Missed games reset to 0 for all players');
     }
 }

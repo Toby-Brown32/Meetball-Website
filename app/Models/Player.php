@@ -12,7 +12,7 @@ class Player extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['forename', 'surname', 'nickname', 'player_level'];
+    protected $fillable = ['forename', 'surname', 'nickname', 'player_level', 'missed_games'];
 
     public function matches(): BelongsToMany
     {

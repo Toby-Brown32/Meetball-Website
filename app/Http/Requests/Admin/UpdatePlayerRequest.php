@@ -18,6 +18,7 @@ class UpdatePlayerRequest extends FormRequest
             'surname' => ['required', 'string', 'max:255'],
             'nickname' => ['nullable', 'string', 'max:255'],
             'player_level' => ['required', 'integer', 'min:1', 'max:8'],
+            'missed_games' => ['nullable', 'integer', 'min:0'],
         ];
     }
 }

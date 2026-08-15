@@ -29,6 +29,7 @@ Route::middleware(['auth:admin', 'admin.only'])->group(function () {
         Route::get('/players', [AdminPlayerController::class, 'index'])->name('players.index');
         Route::get('/players/create', [AdminPlayerController::class, 'create'])->name('players.create');
         Route::post('/players', [AdminPlayerController::class, 'store'])->name('players.store');
+        Route::post('/players/reset-missed', [AdminPlayerController::class, 'resetMissed'])->name('players.reset_missed');
         Route::get('/players/{player}/edit', [AdminPlayerController::class, 'edit'])->name('players.edit');
         Route::put('/players/{player}', [AdminPlayerController::class, 'update'])->name('players.update');
         Route::delete('/players/{player}', [AdminPlayerController::class, 'destroy'])->name('players.destroy');

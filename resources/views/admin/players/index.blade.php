@@ -17,9 +17,17 @@
 
     <div class="flex items-center justify-between mb-4">
         <h1 class="text-2xl font-bold">Players</h1>
-        <a href="{{ route('admin.players.create') }}" class="px-4 py-2 bg-yellow-500 text-black rounded hover:bg-yellow-600">
-            Add Player
-        </a>
+        <div class="flex items-center gap-3">
+            <form method="POST" action="{{ route('admin.players.reset_missed') }}" onsubmit="return confirm('Reset missed games for all players to 0?');">
+                @csrf
+                <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">
+                    Reset Missed Games
+                </button>
+            </form>
+            <a href="{{ route('admin.players.create') }}" class="px-4 py-2 bg-yellow-500 text-black rounded hover:bg-yellow-600">
+                Add Player
+            </a>
+        </div>
     </div>
 
     <div class="bg-white/10 rounded-lg overflow-hidden">
@@ -30,6 +38,7 @@
                         <th class="px-4 py-3 text-left text-sm font-semibold">Name</th>
                         <th class="px-4 py-3 text-left text-sm font-semibold">Nickname</th>
                         <th class="px-4 py-3 text-left text-sm font-semibold">Level</th>
+                        <th class="px-4 py-3 text-left text-sm font-semibold">Missed</th>
                         <th class="px-4 py-3 text-right text-sm font-semibold">Actions</th>
                     </tr>
                 </thead>
@@ -44,6 +53,9 @@
                             </td>
                             <td class="px-4 py-3">
                                 {{ $player->player_level }}
+                            </td>
+                            <td class="px-4 py-3">
+                                {{ $player->missed_games ?? 0 }}
                             </td>
                             <td class="px-4 py-3">
                                 <div class="flex items-center justify-end gap-3">
@@ -62,7 +74,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td class="px-4 py-6 text-center text-white/70" colspan="4">
+                            <td class="px-4 py-6 text-center text-white/70" colspan="5">
                                 No players found.
                             </td>
                         </tr>
